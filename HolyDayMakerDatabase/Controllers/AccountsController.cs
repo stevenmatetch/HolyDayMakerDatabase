@@ -22,10 +22,18 @@ namespace HolyDayMakerDatabase.Controllers
         }
 
         // GET: api/Accounts
-        [HttpGet]
-        public IEnumerable<Account> GetAccount()
+        [HttpPost]
+        public User GetAccount([FromBody] Account account)
         {
-            return _context.Account;
+            var acc = _context.Account.Where(x => x.Username == account.Username).FirstOrDefault();
+            var user = new User();
+            
+            if(acc != null && acc.Password == account.Password)
+            {
+                user = _context.User.Where(x => x.ID == acc.UserID).FirstOrDefault();
+                return user;
+            }
+            return user;
         }
 
         // GET: api/Accounts/5
@@ -81,22 +89,6 @@ namespace HolyDayMakerDatabase.Controllers
 
             return NoContent();
         }
-
-        // POST: api/Accounts
-        [HttpPost]
-        public async Task<IActionResult> PostAccount([FromBody] Account account)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Account.Add(account);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAccount", new { id = account.ID }, account);
-        }
-
         // DELETE: api/Accounts/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAccount([FromRoute] int id)
