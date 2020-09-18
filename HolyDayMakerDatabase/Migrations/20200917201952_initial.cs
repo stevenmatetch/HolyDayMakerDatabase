@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HolyDayMakerDatabase.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +31,8 @@ namespace HolyDayMakerDatabase.Migrations
                     Name = table.Column<string>(nullable: true),
                     Place = table.Column<string>(nullable: true),
                     NumberOfBeds = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(nullable: false)
+                    Price = table.Column<double>(nullable: false),
+                    ImageURL = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

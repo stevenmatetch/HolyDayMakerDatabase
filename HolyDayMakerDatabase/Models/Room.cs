@@ -12,5 +12,6 @@ namespace HolyDayMakerDatabase.Models
         public string Place { get; set; }
         public string NumberOfBeds { get; set; }
         public double Price { get; set; }
+        public string ImageURL { get; set; }
     }
 }
