@@ -15,7 +15,8 @@ namespace HolyDayMakerDatabase.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(nullable: false)
+                    Price = table.Column<double>(nullable: false),
+                    ImageURL = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

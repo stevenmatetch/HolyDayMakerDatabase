@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HolyDayMakerDatabase.Migrations
 {
     [DbContext(typeof(HolyDayMakerDatabaseContext))]
-    [Migration("20200917201952_initial")]
+    [Migration("20200919143147_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,8 @@ namespace HolyDayMakerDatabase.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImageURL");
 
                     b.Property<string>("Name");
 
