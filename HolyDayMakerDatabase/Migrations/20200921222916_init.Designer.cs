@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HolyDayMakerDatabase.Migrations
 {
     [DbContext(typeof(HolyDayMakerDatabaseContext))]
-    [Migration("20200919143147_initial")]
-    partial class initial
+    [Migration("20200921222916_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,14 +47,15 @@ namespace HolyDayMakerDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<int>("RoomID");
+
+                    b.Property<DateTime>("StartDate");
 
                     b.Property<int>("UserID");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("UserID")
-                        .IsUnique();
 
                     b.ToTable("Booking");
                 });
@@ -136,14 +137,6 @@ namespace HolyDayMakerDatabase.Migrations
                     b.HasOne("HolyDayMakerDatabase.Models.User")
                         .WithOne("Account")
                         .HasForeignKey("HolyDayMakerDatabase.Models.Account", "UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HolyDayMakerDatabase.Models.Booking", b =>
-                {
-                    b.HasOne("HolyDayMakerDatabase.Models.User")
-                        .WithOne("Booking")
-                        .HasForeignKey("HolyDayMakerDatabase.Models.Booking", "UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

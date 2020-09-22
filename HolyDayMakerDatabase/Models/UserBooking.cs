@@ -8,11 +8,9 @@ namespace HolyDayMakerDatabase.Models
 {
     public class UserBooking
     {
-        [Key]
-        public int ID { get; set; }
-        public int UserID { get; set; }
         public int BookingID { get; set; }
-        
-
+        public Room Room { get; set; }
+        public DateTime CheckinDate { get; set; }
+        public DateTime CheckoutDate { get; set; }
     }
 }

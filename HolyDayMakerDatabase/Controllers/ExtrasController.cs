@@ -25,6 +25,7 @@ namespace HolyDayMakerDatabase.Controllers
         [HttpGet]
         public IEnumerable<Extra> GetExtra()
         {
+            var result = _context.Extra;
             return _context.Extra;
         }
 

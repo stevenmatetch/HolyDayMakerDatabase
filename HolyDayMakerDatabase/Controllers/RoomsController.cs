@@ -25,7 +25,8 @@ namespace HolyDayMakerDatabase.Controllers
         [HttpGet]
         public IEnumerable<Room> GetRoom()
         {
-            return _context.Room;
+            var result = _context.Room;
+            return result;
         }
 
         // GET: api/Rooms/5

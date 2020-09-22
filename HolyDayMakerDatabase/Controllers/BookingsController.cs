@@ -29,22 +29,35 @@ namespace HolyDayMakerDatabase.Controllers
         }
 
         // GET: api/Bookings/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetBooking([FromRoute] int id)
+        [HttpGet("{userid}")]
+        public async Task<IActionResult> GetBooking([FromRoute] int userid)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var booking = await _context.Booking.FindAsync(id);
+            var bookings = _context.Booking.Where(x => x.UserID == userid).ToList();
 
-            if (booking == null)
+            List<UserBooking> userbooking = new List<UserBooking>();
+
+            foreach(var booking in bookings)
+            {
+                var r = _context.Room.Where(x => x.ID == booking.RoomID).FirstOrDefault();
+                UserBooking ub = new UserBooking();
+                ub.Room = r;
+                ub.CheckinDate = booking.StartDate;
+                ub.CheckoutDate = booking.EndDate;
+                ub.BookingID = booking.ID;
+                userbooking.Add(ub);
+            }
+
+            if (userbooking == null)
             {
                 return NotFound();
             }
 
-            return Ok(booking);
+            return Ok(userbooking);
         }
 
         // PUT: api/Bookings/5
@@ -84,17 +97,22 @@ namespace HolyDayMakerDatabase.Controllers
 
         // POST: api/Bookings
         [HttpPost]
-        public async Task<IActionResult> PostBooking([FromBody] Booking booking)
+        public async Task<IActionResult> PostBooking([FromBody]List<Booking> booking)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Booking.Add(booking);
+            foreach(var room in booking)
+            {
+                _context.Booking.Add(room);
+            }
+
+            //_context.Booking.Add(booking);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBooking", new { id = booking.ID }, booking);
+            return Ok();
         }
 
         // DELETE: api/Bookings/5

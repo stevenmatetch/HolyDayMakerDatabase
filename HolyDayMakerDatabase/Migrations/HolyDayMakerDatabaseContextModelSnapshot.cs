@@ -45,14 +45,15 @@ namespace HolyDayMakerDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<int>("RoomID");
+
+                    b.Property<DateTime>("StartDate");
 
                     b.Property<int>("UserID");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("UserID")
-                        .IsUnique();
 
                     b.ToTable("Booking");
                 });
@@ -134,14 +135,6 @@ namespace HolyDayMakerDatabase.Migrations
                     b.HasOne("HolyDayMakerDatabase.Models.User")
                         .WithOne("Account")
                         .HasForeignKey("HolyDayMakerDatabase.Models.Account", "UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HolyDayMakerDatabase.Models.Booking", b =>
-                {
-                    b.HasOne("HolyDayMakerDatabase.Models.User")
-                        .WithOne("Booking")
-                        .HasForeignKey("HolyDayMakerDatabase.Models.Booking", "UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

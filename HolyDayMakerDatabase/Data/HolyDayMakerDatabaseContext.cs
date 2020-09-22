@@ -27,10 +27,10 @@ namespace HolyDayMakerDatabase.Data
         {
             
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Models.UserBooking>().HasKey(ub => new { ub.UserID, ub.BookingID });
+            //modelBuilder.Entity<Models.UserBooking>().HasKey(ub => new { ub.UserID, ub.BookingID });
 
         }
-        public DbSet<HolyDayMakerDatabase.Models.UserBooking> UserBooking { get; set; }
+        //public DbSet<HolyDayMakerDatabase.Models.UserBooking> UserBooking { get; set; }
     }
 
 }
