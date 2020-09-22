@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HolyDayMakerDatabase.Migrations
 {
     [DbContext(typeof(HolyDayMakerDatabaseContext))]
-    [Migration("20200921222916_init")]
-    partial class init
+    [Migration("20200922190040_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -115,21 +115,6 @@ namespace HolyDayMakerDatabase.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("HolyDayMakerDatabase.Models.UserBooking", b =>
-                {
-                    b.Property<int>("UserID");
-
-                    b.Property<int>("BookingID");
-
-                    b.Property<int>("ID");
-
-                    b.HasKey("UserID", "BookingID");
-
-                    b.HasAlternateKey("ID");
-
-                    b.ToTable("UserBooking");
                 });
 
             modelBuilder.Entity("HolyDayMakerDatabase.Models.Account", b =>
