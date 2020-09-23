@@ -52,6 +52,7 @@ namespace HolyDayMakerDatabase.Controllers
                 userbooking.Add(ub);
             }
 
+
             if (userbooking == null)
             {
                 return NotFound();
