@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HolyDayMakerDatabase.Migrations
 {
     [DbContext(typeof(HolyDayMakerDatabaseContext))]
-    [Migration("20200922190040_Initial")]
-    partial class Initial
+    [Migration("20200923134918_iitial")]
+    partial class iitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

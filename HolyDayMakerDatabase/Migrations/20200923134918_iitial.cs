@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HolyDayMakerDatabase.Migrations
 {
-    public partial class Initial : Migration
+    public partial class iitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
