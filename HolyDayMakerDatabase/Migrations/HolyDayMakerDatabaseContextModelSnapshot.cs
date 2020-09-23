@@ -115,21 +115,6 @@ namespace HolyDayMakerDatabase.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("HolyDayMakerDatabase.Models.UserBooking", b =>
-                {
-                    b.Property<int>("UserID");
-
-                    b.Property<int>("BookingID");
-
-                    b.Property<int>("ID");
-
-                    b.HasKey("UserID", "BookingID");
-
-                    b.HasAlternateKey("ID");
-
-                    b.ToTable("UserBooking");
-                });
-
             modelBuilder.Entity("HolyDayMakerDatabase.Models.Account", b =>
                 {
                     b.HasOne("HolyDayMakerDatabase.Models.User")

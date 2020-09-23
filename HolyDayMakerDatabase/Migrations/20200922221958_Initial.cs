@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HolyDayMakerDatabase.Migrations
 {
-    public partial class init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,20 +73,6 @@ namespace HolyDayMakerDatabase.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserBooking",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false),
-                    BookingID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserBooking", x => new { x.UserID, x.BookingID });
-                    table.UniqueConstraint("AK_UserBooking_ID", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Account",
                 columns: table => new
                 {
@@ -127,9 +113,6 @@ namespace HolyDayMakerDatabase.Migrations
 
             migrationBuilder.DropTable(
                 name: "Room");
-
-            migrationBuilder.DropTable(
-                name: "UserBooking");
 
             migrationBuilder.DropTable(
                 name: "User");
